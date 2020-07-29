@@ -8,8 +8,14 @@ interface User {
 }
 
 const UserDetails: React.FC = () => {
-  const data: User = {}
+  const { id } = useParams();
+  const { data} = useFetch<User>(`http://localhost:3333/users/${id}`);
 
+if(!data){
+  return (
+    <h1>Loading...</h1>
+  )
+}
   return (
     <ul>
       <li>ID: {data?.id}</li>
