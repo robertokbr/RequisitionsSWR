@@ -10,15 +10,15 @@ interface User {
 }
 
 const UserList: React.FC = () => {
-  const data: User[]= []
 
-  if (!data) {
-    return <p>Carregando...</p>
-  }
+  const {data } = useFetch<User[]>('http://localhost:3333/users')
+
+  
+  
 
   return (
     <ul>
-      {data.map(user => (
+      {data?.map(user => (
         <li key={user.id}>
           <Link to={`/users/${user.id}`}>
             {user.name}
