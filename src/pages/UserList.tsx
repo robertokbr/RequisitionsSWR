@@ -13,17 +13,21 @@ const UserList: React.FC = () => {
 
   const {data } = useFetch<User[]>('http://localhost:3333/users')
 
-  
+  if(!data){
+    return (
+      <h1>Loading...</h1>
+    )
+  }
   
 
   return (
     <ul>
-      {data?.map(user => (
+      {data.map(user => (
         <li key={user.id}>
           <Link to={`/users/${user.id}`}>
             {user.name}
           </Link>
-          <button type="button" onClick={() => handleNameChange(user.id)}>
+          <button type="button" >
             Alterar nome
           </button>
         </li>
