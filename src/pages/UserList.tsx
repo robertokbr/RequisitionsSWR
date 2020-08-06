@@ -12,6 +12,11 @@ interface User {
 const UserList: React.FC = () => {
 
   const {data } = useFetch<User[]>('http://localhost:3333/users')
+  const handleNameChange = useCallback((id : number)=>{
+    api.put
+
+  },[])
+
 
   if(!data){
     return (
